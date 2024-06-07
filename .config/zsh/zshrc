@@ -1,0 +1,90 @@
+autoload -Uz compinit
+autoload -U promptinit
+promptinit
+compinit
+
+_comp_options+=(globdots) # With hidden files
+source ~/.config/zsh/completion.zsh
+
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+typeset -g POWERLEVEL10K_INSTANT_PROMPT=quiet
+
+# Default Applications
+export EDITOR=/bin/nvim
+export VISUAL=/bin/nvim
+export TERMINAL='alacritty'
+export BROWSER='brave'
+export CODEEDITOR='code'
+
+bindkey -v
+
+# PATH
+export PATH=/bin:/usr/bin:/usr/local/bin:${PATH}
+# . "$HOME/.cargo/env"
+export PATH=$HOME/.cargo/bin:${PATH}
+export PATH=$HOME/.local/bin:${PATH}
+export PATH=$HOME/bin/:${PATH}
+manpath=(/usr/man /usr/lang/man /usr/local/man)
+export MANPATH
+export LD_PRELOAD=/usr/lib/libgtk3-nocsd.so.0
+
+# ZSH Properties
+export ZSH=$HOME/.config/zsh
+export HISTFILE=$ZSH/zsh_history
+export HISTSIZE=10000
+export SAVEHIST=10000
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+
+# Fixing Java problem
+export _JAVA_AWT_WM_NONREPARENTING=1
+export AWT_TOOLKIT=MToolkit
+
+# Alias
+alias pm="pacman"
+alias spm="sudo pacman"
+alias nv="nvim"
+alias snv="sudoedit"
+alias pacman="sudo pacman"
+alias nf="neofetch | lolcat"
+alias q="exit"
+alias mv='nocorrect mv'       # no spelling correction on mv
+alias cp='nocorrect cp'       # no spelling correction on cp
+alias md='nocorrect mkdir' # no spelling correction on mkdir
+alias d='dirs -v'
+alias h=history
+alias grep=egrep
+alias ll='ls -l'
+alias la='ls -a'
+alias lsd='ls -ld *(-/DN)'
+alias lsa='ls -ld .*'
+alias duall='du -sh /var/cache/pacman/pkg .cache/yay'
+alias upd='yay -Syu --noconfirm'
+alias cln='yay -Scc'
+alias alacritty='LIBGL_ALWAYS_SOFTWARE=1 alacritty'
+alias srec='ffmpeg -f x11grab -s 1920x1080 -r 30 -i :0.0 -f alsa -i default -c:v libx264 -preset ultrafast -crf 0 -c:a aac -strict -2 -b:a 384k -ar 48000 -pix_fmt yuv420p -f mp4 -y ~/Videos/$(date +%Y-%m-%d-%H-%M-%S).mp4'
+
+# Git Aliases
+alias glone="git clone"
+alias gadd="git add"
+alias gommit="git commit"
+alias gush="git push"
+alias gull="git pull"
+alias gtatus="git status"
+alias gupdateall="git pull && git add . && git commit -m \"Update `date +'%Y-%m-%d %H:%M'`\" && git push"
+alias glfstrack="git lfs track"
+
+### ---- PLUGINS & THEMES -----------------------------------
+source $ZSH/themes/powerlevel10k/powerlevel10k.zsh-theme
+source $ZSH/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+fpath=($ZSH/plugins/zsh-completions/src $fpath)
+source $ZSH/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.config/zsh/p10k.zsh ]] || source ~/.config/zsh/p10k.zsh

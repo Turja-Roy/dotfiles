@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [[ $# -eq 0 ]]; then
+    read -p "Enter the file name: " filename
+else
+    filename="$1"
+fi
+
+
+# Copy the file
+cp "/home/turja/Templates/CP/template.py" "$filename.py"
+
+# Create input and output files if they don't exist
+[[ ! -f "input.txt" ]] && touch "input.txt"
+[[ ! -f "output.txt" ]] && touch "output.txt"
+
+echo "Done!"

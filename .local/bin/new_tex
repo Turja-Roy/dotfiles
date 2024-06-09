@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [[ $# -eq 0 ]]; then
+    read -p "Enter the file name: " filename
+else
+    filename="$1"
+fi
+
+# Copy the file
+cp "/home/turja/Templates/LaTeX/template.tex" "$filename.tex"
+cp "/home/turja/Templates/LaTeX/preamble.tex" .
+
+echo "Done!"

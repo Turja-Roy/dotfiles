@@ -1,0 +1,75 @@
+#!/bin/bash
+
+# Find the root directory of the Java project
+find_root_directory() {
+    local current_dir="$(pwd)"
+    while [[ "$current_dir" != "/" ]]; do
+        if [[ -d "$current_dir/src" ]]; then
+            echo "$current_dir"
+            return
+        fi
+        current_dir="$(dirname "$current_dir")"
+    done
+    echo "Error: Source directory 'src' not found. Are you sure you're in a Java project directory?" >&2
+    exit 1
+}
+
+# Main function to compile and run the Java project
+main() {
+    local root_dir="$(find_root_directory)"
+    local src_dir="$root_dir/src"
+    local bin_dir="$root_dir/bin"
+    local lib_dir="$root_dir/lib"
+    local res_dir="$root_dir/res"
+    local package_dir="$root_dir/packages"
+
+    # Create bin directory if it doesn't exist
+    mkdir -p "$bin_dir"
+
+    # Check if source directory exists
+    if [[ ! -d "$src_dir" ]]; then
+        echo "Error: Source directory '$src_dir' not found." >&2
+        exit 1
+    fi
+
+    # Compile Java files
+    echo "Compiling Java files..."
+    export _JAVA_AWT_WM_NONPARENTING=1
+    if ! javac -d "$bin_dir" $(find "$src_dir" -name "*.java"); then
+        echo "Compilation failed."
+        exit 1
+    fi
+
+    # Check if lib directory exists and add JAR files to classpath
+    if [[ -d "$lib_dir" ]]; then
+        local jars=$(find "$lib_dir" -name "*.jar" -printf '%p:')
+        CLASSPATH="$CLASSPATH:$jars"
+    fi
+
+    # Check if res directory exists and add to classpath
+    if [[ -d "$res_dir" ]]; then
+        CLASSPATH="$CLASSPATH:$res_dir"
+    fi
+
+    # Check if package directory exists
+    if [[ -d "$package_dir" ]]; then
+        echo "Package directory found. Please specify the main class to run:"
+        read -r main_class
+        if [[ -z "$main_class" ]]; then
+            echo "Error: Main class not provided."
+            exit 1
+        fi
+        java -cp "$bin_dir:$CLASSPATH" "$main_class"
+    else
+        # No package directory, try to find and run Main class
+        local main_class=$(find "$src_dir" -name "Main.java" -printf '%P\n' | sed 's/\.java$//' | tr '/' '.')
+        if [[ -z "$main_class" ]]; then
+            echo "Error: Main class not found."
+            exit 1
+        fi
+        java -cp "$bin_dir:$CLASSPATH" "$main_class"
+    fi
+}
+
+# Call main function
+main

@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Ask for the filename if not provided
+if [ -z "$1" ]; then
+    echo "Please provide the filename to compile and run"
+    read -r filename
+else
+    filename=$1
+fi 
+
+# Detect the file extension
+extension="${filename##*.}"
+
+# If the file is a c/c++ file
+if [ "$extension" == "c" ] || [ "$extension" == "cpp" ]; then
+    g++ -o "${filename%.*}" $filename && ./"${filename%.*}"
+fi
+
+# If the file is a python file
+if [ "$extension" == "py" ]; then
+    python $filename
+fi
+
+# If the file is a java file
+if [ "$extension" == "java" ]; then
+    export _JAVA_AWT_WM_NONREPARENTING=1
+    # Create a bin directory if it doesn't exist
+    if [ ! -d "bin" ]; then
+        mkdir bin
+    fi
+    javac -d bin $filename && java -cp bin "${filename%.*}"
+fi

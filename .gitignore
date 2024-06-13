@@ -1,2 +1,4 @@
 */__pycache__/*.pyc
 ./.config/zsh/zsh_history
+./.config/ranger/colorschemes/__pycache__/*.pyc
+./.config/ranger/plugins/__pycache__/*.pyc

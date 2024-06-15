@@ -10,11 +10,11 @@
   <property name="lastOpenPath" value="/home/turja/College Applications/2024/UTA/Docs for I-20/Dump Docs"/>
   <property name="lastImagePath" value="/media/My_Drive/Turja_Roy/College/Adroit-Fall'23/[9] Financial Aid/Other Documents"/>
   <property name="edgePanSpeed" value="20"/>
-  <property name="edgePanMaxMult" value="5"/>
+  <property name="edgePanMaxMult" value="10"/>
   <property name="zoomStep" value="10"/>
   <property name="zoomStepScroll" value="2"/>
   <property name="displayDpi" value="101"/>
-  <property name="mainWndWidth" value="942"/>
+  <property name="mainWndWidth" value="1894"/>
   <property name="mainWndHeight" value="1028"/>
   <property name="maximized" value="false"/>
   <property name="showToolbar" value="true"/>

@@ -10,7 +10,7 @@ ipc_socket = true
 ## ENVIRONMENT ----------------------------------------------------
 
 [env]
-TERM = "alacritty"
+TERM = "xterm-256color"
 WINIT_X11_SCALE_FACTOR = "1.0"
 
 ## WINDOW ---------------------------------------------------------

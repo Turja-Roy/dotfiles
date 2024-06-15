@@ -12,6 +12,7 @@ fi
 typeset -g POWERLEVEL10K_INSTANT_PROMPT=quiet
 
 # Default Applications
+export TERM='xterm-256color'
 export EDITOR=/bin/nvim
 export VISUAL=/bin/nvim
 export TERMINAL='alacritty'

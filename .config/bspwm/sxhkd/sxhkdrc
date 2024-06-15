@@ -57,7 +57,7 @@ super + shift + x
 
 #alacritty
 super + Return
-    alacritty
+    alacritty -e tmux
 
 #Xkill
 super + Escape

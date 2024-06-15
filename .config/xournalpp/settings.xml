@@ -14,7 +14,7 @@
   <property name="zoomStep" value="10"/>
   <property name="zoomStepScroll" value="2"/>
   <property name="displayDpi" value="101"/>
-  <property name="mainWndWidth" value="1894"/>
+  <property name="mainWndWidth" value="942"/>
   <property name="mainWndHeight" value="1028"/>
   <property name="maximized" value="false"/>
   <property name="showToolbar" value="true"/>
@@ -254,7 +254,7 @@
       <attribute name="drawingType" type="string" value="default"/>
       <attribute name="fill" type="int" value="0"/>
       <attribute name="fillAlpha" type="int" value="128"/>
-      <attribute name="size" type="string" value="THIN"/>
+      <attribute name="size" type="string" value="MEDIUM"/>
       <attribute name="style" type="string" value="plain"/>
     </data>
     <data name="playObject">

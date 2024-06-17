@@ -51,7 +51,7 @@
   <property name="highlightPosition" value="true"/>
   <property name="cursorHighlightColor" value="16776960"/>
   <property name="cursorHighlightBorderColor" value="2147483903"/>
-  <property name="cursorHighlightRadius" value="5"/>
+  <property name="cursorHighlightRadius" value="15"/>
   <property name="cursorHighlightBorderWidth" value="2"/>
   <property name="darkTheme" value="true"/>
   <property name="useStockIcons" value="false"/>
@@ -250,11 +250,11 @@
       <attribute name="drawingType" type="string" value="default"/>
     </data>
     <data name="pen">
-      <attribute name="color" type="hex" value="ffffff"/>
+      <attribute name="color" type="hex" value="00c0ff"/>
       <attribute name="drawingType" type="string" value="default"/>
       <attribute name="fill" type="int" value="0"/>
       <attribute name="fillAlpha" type="int" value="128"/>
-      <attribute name="size" type="string" value="MEDIUM"/>
+      <attribute name="size" type="string" value="THIN"/>
       <attribute name="style" type="string" value="plain"/>
     </data>
     <data name="playObject">
@@ -278,7 +278,7 @@
       <attribute name="drawingType" type="string" value="default"/>
     </data>
     <data name="selectRect">
-      <attribute name="drawingType" type="string" value="ellipse"/>
+      <attribute name="drawingType" type="string" value="line"/>
     </data>
     <data name="selectRegion">
       <attribute name="drawingType" type="string" value="default"/>

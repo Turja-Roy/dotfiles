@@ -33,7 +33,7 @@ lines = 24
 ## Blank space added around the window in pixels.
 [window.padding]
 x = 5
-y = 5
+y = 4
 
 ## SCROLLING ------------------------------------------------------
 [scrolling]

@@ -157,6 +157,10 @@ super + ctrl + shift + s
 ctrl + alt + t
     alacritty
 
+#alacritty opacity
+# ctrl + shift + {9,0}
+#     alacritty msg config window.opacity={0.8,1.0}
+
 
 #################################################################
 # ALT + ... KEYS

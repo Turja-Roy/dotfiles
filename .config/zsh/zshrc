@@ -77,9 +77,11 @@ alias gadd="git add"
 alias gommit="git commit"
 alias gush="git push"
 alias gull="git pull"
-alias gtatus="git status"
-alias gupdateall="git pull && git add . && git commit -m \"Update `date +'%Y-%m-%d %H:%M'`\" && git push"
+alias gst="git status"
+alias glog="git log"
+alias gupdateall="git pull && git add -A && git commit -m \"Update `date +'%Y-%m-%d %H:%M'`\" && git push"
 alias glfstrack="git lfs track"
+alias lg="lazygit"
 
 ### ---- PLUGINS & THEMES -----------------------------------
 source $ZSH/themes/powerlevel10k/powerlevel10k.zsh-theme

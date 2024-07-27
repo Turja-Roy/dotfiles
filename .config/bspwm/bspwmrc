@@ -64,7 +64,7 @@ bspc rule -a Arcolinux-calamares-tool.py state=floating
 # bspc rule -a feh state=floating
 #bspc rule -a mpv state=floating sticky=on
 #bspc rule -a Font-manager state=floating
-bspc rule -a Pavucontrol state=floating sticky=off
+bspc rule -a Pavucontrol state=floating center=on sticky=off
 #bspc rule -a Peek state=floating
 #bspc rule -a rofi state=floating sticky=on
 #bspc rule -a Skype state=floating

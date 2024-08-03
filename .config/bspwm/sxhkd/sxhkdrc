@@ -57,7 +57,7 @@ super + shift + x
 
 #alacritty
 super + Return
-    alacritty -e tmux
+    alacritty
 
 #Xkill
 super + Escape
@@ -155,7 +155,7 @@ super + ctrl + shift + s
 
 #alacritty
 ctrl + alt + t
-    alacritty
+    alacritty -e tmux
 
 #alacritty opacity
 # ctrl + shift + {9,0}

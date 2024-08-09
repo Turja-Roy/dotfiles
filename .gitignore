@@ -5,3 +5,10 @@
 .config/nvim/autoload/plugged/tokyonight-vim
 .config/nvim/autoload/plugged/vim-snippets
 .config/ranger/plugins/ranger_devicons
+.config/nvim/.Vim_Configs_Old
+.config/nvim/autoload
+.config/nvim/autoload
+.config/nvim/coc-settings.json
+.config/nvim/coc-settings.json
+.config/nvim/coc-settings.json
+.config/nvim/init.vim_

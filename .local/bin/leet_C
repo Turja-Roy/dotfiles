@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [[ $# -eq 0 ]]; then
+    read -p "Enter the file name: " filename
+else
+    filename="$1"
+fi
+
+
+# Copy the file
+cp "/home/turja/Templates/temp_LC.cpp" "$filename.cpp"
+
+echo "Done!"

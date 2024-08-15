@@ -61,16 +61,19 @@ alias md='nocorrect mkdir' # no spelling correction on mkdir
 alias d='dirs -v'
 alias h=history
 alias grep=egrep
-alias ll='ls -l'
-alias la='ls -a'
-alias lsd='ls -ld *(-/DN)'
-alias lsa='ls -ld .*'
+alias ls='exa'
+alias ll='exa -l'
+alias la='exa -a'
+alias lsd='exa -ld *(-/DN)'
+alias lsa='exa -ld .*'
+alias tree='exa --tree'
 alias duall='du -sh /var/cache/pacman/pkg .cache/yay'
 alias upd='yay -Syu --noconfirm'
 alias cln='yay -Scc'
 alias alacritty='LIBGL_ALWAYS_SOFTWARE=1 alacritty'
 alias srec='ffmpeg -f x11grab -s 1920x1080 -r 30 -i :0.0 -f alsa -i default -c:v libx264 -preset ultrafast -crf 0 -c:a aac -strict -2 -b:a 384k -ar 48000 -pix_fmt yuv420p -f mp4 -y ~/Videos/$(date +%Y-%m-%d-%H-%M-%S).mp4'
 alias tmxat='tmux attach-session'
+alias cdf='cd $(fd -t d | fzf)'
 
 # Git Aliases
 alias glone="git clone"
@@ -91,6 +94,7 @@ source $ZSH/themes/powerlevel10k/powerlevel10k.zsh-theme
 source $ZSH/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 fpath=($ZSH/plugins/zsh-completions/src $fpath)
 source $ZSH/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+source <(fzf --zsh)
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.config/zsh/p10k.zsh ]] || source ~/.config/zsh/p10k.zsh

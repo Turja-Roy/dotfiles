@@ -13,6 +13,5 @@
 .config/nvim/coc-settings.json
 .config/nvim/init.vim_
 .config/nvim/lazy-lock.json
-.config/xournalpp/metadata/1705062884457230.metadata
-.config/xournalpp/metadata/1726065561202427.metadata
 .config/xournalpp/settings.xml
+*.metadata

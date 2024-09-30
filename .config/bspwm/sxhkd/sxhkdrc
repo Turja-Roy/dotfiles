@@ -454,9 +454,9 @@ super + ctrl + {_,shift +}{1-9}
 # ALT KEYS
 #################################################################
 
-#Focus last window
+#Focus windows of current desktop
 alt + Tab
-	bspc node -f last
+    bspc node -f next.local.window
 
 #Focus selected desktop
 alt + shift + Tab

@@ -23,8 +23,8 @@ super + space
     # rofi -show drun
 
 # Rofi File Finder
-alt + s
-    rofi -show filebrowser -modi filebrowser -theme ~/.config/polybar/cuts/scripts/rofi/launcher.rasi
+# alt + s
+#     rofi -show filebrowser -modi filebrowser -theme ~/.config/polybar/cuts/scripts/rofi/launcher.rasi
     # rofi  -show find -modi find:~/.local/share/rofi/finder.sh -theme ~/.config/polybar/cuts/scripts/rofi/launcher.rasi
 
 #################################################################

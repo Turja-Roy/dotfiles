@@ -5,7 +5,7 @@
     // "width": 1280, // Waybar width
     "spacing": 10, // Gaps between modules
     "modules-left": [ "hyprland/workspaces", "network", "hyprland/window" ],
-    "modules-center": [ "tray" ],
+    "modules-center": [ "group/center" ],
     "modules-right": [ "custom/spotify", "group/resources", "group/soundandlight", "group/status", "clock", "custom/power" ],
 
     // Module configurations
@@ -104,7 +104,7 @@
     },
     "group/soundandlight": {
         "orientation": "horizontal",
-        "modules": ["pulseaudio", "backlight"],
+        "modules": ["bluetooth", "pulseaudio", "backlight"],
     },
     "group/status": {
         "orientation": "horizontal",
@@ -121,32 +121,37 @@
             "warning": 30,
             "critical": 15
         },
+        "interval": 5,
         "format": "{icon}  {capacity}%",
         "format-full": "{icon}  {capacity}%",
         "format-charging": " {icon}   {capacity}%",
         "format-plugged": " {icon}   {capacity}%",
         "format-alt": "{time} {icon}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
         "format-icons": [" ", " ", " ", " ", " "]
     },
     "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        // "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-wifi": "   {essid}",
-        "format-ethernet": "  {ipaddr}/{cidr}",
+        "format-wifi": " {essid}",
+        "format-ethernet": " {ipaddr}/{cidr}",
         // "tooltip-format": "  {ifname} via {gwaddr}",
         "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
-        "format-linked": "  {ifname} (No IP)",
+        "format-linked": "{ifname} (No IP)",
         "format-disconnected": "⚠ Disconnected",
         "on-click": "networkmanager_dmenu"
     },
+    "bluetooth": {
+        // "format": "󰂯 {status}",
+        "format-on": "󰂯",
+        "format-off": "󰂲",
+        "format-disabled": "󰂲",
+        "format-connected": "󰂱 {device_alias}",
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "on-click": "rofi-bluetooth"
+    },
     "pulseaudio": {
-        "scroll-step": 1, // %, can be a float
+        "scroll-step": 1,
         "format": "{icon}  {volume}%",
         "tooltip-format": "{icon} {volume}% {format_source}",
-        "format-bluetooth": " {volume}%",
-        "format-bluetooth-muted": "婢 {icon}",
         "format-muted": "婢  {volume}%",
         "format-source": " {volume}%",
         "format-source-muted":"",
@@ -173,5 +178,14 @@
     "custom/power": {
         "format" : "⏻",
         "on-click": "wlogout"
+    },
+    "custom/updates": {
+        "exec": "checkupdates | wc -l",
+        "format": "󰏔 {}",
+        "on-click": "pamac-manager",
+    },
+    "group/center": {
+        "orientation": "horizontal",
+        "modules": [ "tray", "custom/updates" ]
     }
 }

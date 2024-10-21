@@ -4,7 +4,7 @@
 * {
     /* font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif; */
     font-family: Isoveka Nerd Font, feather;
-    /* font-size: 13px; */
+    font-size: 14px;
     padding-top: 2px;
     padding-bottom: 2px;
 }
@@ -50,7 +50,7 @@ button:hover {
     padding: 0 5px;
     background-color: transparent;
     color: #ffffff;
-    font-size: 15px;
+    font-size: 14px;
 }
 #workspaces button:hover {
     background: rgba(0, 0, 0, 0.8);
@@ -177,7 +177,7 @@ label:focus {
     border-radius: 15px;
     padding: 0 12px;
     font-weight: bold;
-    font-size: 15px;
+    font-size: 14px;
 }
 
 #soundandlight {
@@ -185,7 +185,7 @@ label:focus {
     color: #ffffff;
     border-radius: 15px;
     padding: 0px 12px;
-    font-size: 15px;
+    font-size: 14px;
 }
 
 #status {
@@ -194,7 +194,7 @@ label:focus {
     /* border: 3px solid #ffffff; */
     border-radius: 15px;
     /* padding: 3px 8px; */
-    font-size: 15px;
+    font-size: 14px;
 }
 
 #backlight {

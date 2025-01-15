@@ -180,7 +180,7 @@ label:focus {
     font-size: 14px;
 }
 
-#soundandlight {
+#levels {
     background-color: @color3;
     color: #ffffff;
     border-radius: 15px;

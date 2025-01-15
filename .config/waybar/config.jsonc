@@ -6,7 +6,7 @@
     "spacing": 10, // Gaps between modules
     "modules-left": [ "hyprland/workspaces", "network", "hyprland/window" ],
     "modules-center": [ "group/center" ],
-    "modules-right": [ "custom/spotify", "group/resources", "group/soundandlight", "group/status", "clock", "custom/power" ],
+    "modules-right": [ "custom/spotify", "group/resources", "group/levels", "group/status", "clock", "custom/power" ],
 
     // Module configurations
     "hyprland/workspaces": {
@@ -102,7 +102,7 @@
         "orientation": "horizontal",
         "modules": ["cpu", "memory"],
     },
-    "group/soundandlight": {
+    "group/levels": {
         "orientation": "horizontal",
         "modules": ["bluetooth", "pulseaudio", "backlight"],
     },
@@ -134,7 +134,7 @@
         }
     },
     "network": {
-        "format-wifi": "  {essid}",
+        "format-wifi": "   {essid}",
         "format-ethernet": " {ipaddr}/{cidr}",
         // "tooltip-format": "  {ifname} via {gwaddr}",
         "tooltip-format": "{ifname}: {ipaddr}/{cidr}",

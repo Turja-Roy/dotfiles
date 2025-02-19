@@ -71,7 +71,7 @@ alias tree='eza --tree --icons'
 alias duall='sudo du -sh /var/cache/pacman/pkg .cache/yay'
 alias upd='yay -Syu --noconfirm && flatpak update -y'
 alias flatup='flatpak update -y'
-alias cln='yay -Scc'
+alias cln='yay -Scc && flatpak uninstall --unused --delete-data -y'
 alias flatcln='flatpak uninstall --unused --delete-data -y'
 # alias alacritty='LIBGL_ALWAYS_SOFTWARE=1 alacritty'
 alias srec='ffmpeg -f x11grab -s 1920x1080 -r 30 -i :0.0 -f alsa -i default -c:v libx264 -preset ultrafast -crf 0 -c:a aac -strict -2 -b:a 384k -ar 48000 -pix_fmt yuv420p -f mp4 -y ~/Videos/$(date +%Y-%m-%d-%H-%M-%S).mp4'
@@ -92,6 +92,9 @@ alias gckout="git checkout"
 alias gupdateall="git pull && git add -A && git commit -m \"Update `date +'%Y-%m-%d %H:%M'`\" && git push"
 alias glfstrack="git lfs track"
 alias lg="lazygit"
+
+# SSH UTA Tier3
+alias utat3="ssh -XY txr7972@master.tier3-atlas.uta.edu"
 
 ### ---- PLUGINS & THEMES -----------------------------------
 source $ZSH/themes/powerlevel10k/powerlevel10k.zsh-theme

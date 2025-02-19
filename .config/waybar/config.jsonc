@@ -160,12 +160,12 @@
         "format-source": " {volume}%",
         "format-source-muted":"",
         "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
+            "headphone": " ",
+            "hands-free": " ",
+            "headset": " ",
+            "phone": " ",
+            "portable": " ",
+            "car": " ",
             "default": ["奄", "奄", "奄", "奔", "奔", "奔", "墳", "墳", "墳", "墳"]
         },
         "on-click": "pavucontrol"

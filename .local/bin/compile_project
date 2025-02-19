@@ -14,6 +14,30 @@ find_root_directory() {
     exit 1
 }
 
+# Function to find the main class
+find_main_class() {
+    local src_dir="$1"
+    
+    # Look for Main.java first
+    local main_class=$(find "$src_dir" -name "Main.java" -printf '%P\n' | sed 's/\.java$//' | tr '/' '.')
+    
+    if [[ -n "$main_class" ]]; then
+        echo "$main_class.java"
+        return
+    fi
+    
+    # If Main.java is not found, search for a class containing the main method
+    while IFS= read -r file; do
+        if grep -q "public static void main" "$file"; then
+            main_class=$(echo "$file" | sed "s|$src_dir/||" | sed 's/\.java$//' | tr '/' '.')
+            echo "$main_class.java"
+            return
+        fi
+    done < <(find "$src_dir" -name "*.java")
+
+    echo "No main class found!"
+}
+
 # Main function to compile and run the Java project
 main() {
     local root_dir="$(find_root_directory)"
@@ -51,24 +75,24 @@ main() {
         CLASSPATH="$CLASSPATH:$res_dir"
     fi
 
-    # Check if package directory exists
-    if [[ -d "$package_dir" ]]; then
-        echo "Package directory found. Please specify the main class to run:"
-        read -r main_class
-        if [[ -z "$main_class" ]]; then
-            echo "Error: Main class not provided."
-            exit 1
-        fi
-        java -cp "$bin_dir:$CLASSPATH" "$main_class"
-    else
-        # No package directory, try to find and run Main class
-        local main_class=$(find "$src_dir" -name "Main.java" -printf '%P\n' | sed 's/\.java$//' | tr '/' '.')
-        if [[ -z "$main_class" ]]; then
-            echo "Error: Main class not found."
-            exit 1
-        fi
-        java -cp "$bin_dir:$CLASSPATH" "$main_class"
+    # Find main class
+    local main_class=$(find_main_class "$src_dir")
+    echo "Main class: $main_class"
+    
+    if [[ -z "$main_class" ]]; then
+        echo "Error: No class with a main method found."
+        exit 1
     fi
+
+    # Ask for command line arguments if not provided
+    if [ -z "$2" ]; then
+        read -p "args: " args
+    else
+        args=$2
+    fi
+    
+    # Run the Java program
+    java -cp "$bin_dir:$CLASSPATH" "$main_class" $args
 }
 
 # Call main function

@@ -28,5 +28,12 @@ if [ "$extension" == "java" ]; then
     if [ ! -d "bin" ]; then
         mkdir bin
     fi
-    javac -d bin $filename && java -cp bin "${filename%.*}"
+    # Ask for command line arguments if not provided
+    if [ -z "$2" ]; then
+        read -p "args: " args
+    else
+        args=$2
+    fi
+
+    javac -d bin $filename && java -cp bin "${filename%.*}" $args
 fi

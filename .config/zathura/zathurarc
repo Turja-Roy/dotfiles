@@ -1,5 +1,5 @@
-set recolor-lightcolor "#bcbcbc"
-set recolor-darkcolor "#1f1f1f"
+set recolor-lightcolor "#1f1f1f"
+set recolor-darkcolor "#e1e1e1"
 
 set statusbar-h-padding 0
 set statusbar-v-padding 0

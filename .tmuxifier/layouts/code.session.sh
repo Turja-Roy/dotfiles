@@ -1,6 +1,6 @@
 session_root "$(pwd)"
 
-if initialize_session "coding"; then
+if initialize_session $(basename $(pwd)); then
 
 	new_window "Coding"
 	if [[ -d "$(pwd)/src" ]]; then

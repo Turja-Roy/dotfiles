@@ -1,3 +1,8 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=0.75in]{geometry}
+\usepackage[document]{ragged2e}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
 \usepackage{enumerate,enumitem}
 \usepackage{framed}
 \usepackage{amsmath,amsfonts,amsthm,thmtools,amssymb,mathtools,commath}
@@ -7,6 +12,7 @@
 \usepackage{caption}
 \usepackage{xcolor}
 \usepackage[most]{tcolorbox}
+\usepackage{xparse}
 \usepackage{cleveref}
 
 
@@ -39,6 +45,11 @@
 	title={#2},#1
 }{def}
 
+\NewDocumentCommand\Definition{mm}{%
+    \begin{definition}{#1}{}
+        #2
+    \end{definition}
+}
 
 %%%%%%%%%%%%%
 %  Theorem  %
@@ -60,6 +71,12 @@
     colback=green!10,
     description font=\bfseries\sffamily
 }{thrm}
+
+\NewDocumentCommand\Theorem{mm}{%
+    \begin{theorem}{#1}{}
+        #2
+    \end{theorem}
+}
 
 
 %%%%%%%%%%%%%%
@@ -83,6 +100,12 @@
     description font=\bfseries\sffamily
  }{corl}
 
+\NewDocumentCommand\Corollary{mm}{%
+    \begin{corollary}{#1}{}
+        #2
+    \end{corollary}
+}
+
 
 %%%%%%%%%%%%%
 %  Example  %
@@ -105,6 +128,11 @@
 }
 {xmp}
 
+\NewDocumentCommand\Example{mm}{%
+    \begin{example}{#1}{}
+        #2
+    \end{example}
+}
 
 %%%%%%%%%%%%%%
 %  Exercise  %
@@ -126,24 +154,29 @@
     borderline west={3pt}{0pt}{black!30},
 }{exc}
 
+\NewDocumentCommand\Exercise{mm}{%
+    \begin{excercise}{#1}{}
+        #2
+    \end{excercise}
+}
+
 %%%%%%%%%%
 %  Note  %
 %%%%%%%%%%
 \usetikzlibrary{arrows,calc,shadows.blur}
 \tcbuselibrary{skins}
-\newtcolorbox{note}[1][]{%
+\newtcbtheorem[]{note}{}%
+{
 	enhanced jigsaw,
 	colback=gray!20!white,%
 	colframe=gray!80!black,
 	size=small,
 	boxrule=1pt,
-	title=\textbf{Note:-},
 	halign title=flush center,
 	coltitle=black,
 	breakable,
 	drop shadow=black!50!white,
 	attach boxed title to top left={xshift=1cm,yshift=-\tcboxedtitleheight/2,yshifttext=-\tcboxedtitleheight/2},
-	minipage boxed title=1.5cm,
 	boxed title style={%
 			colback=white,
 			size=fbox,
@@ -162,7 +195,14 @@
 					\end{scope}
 				},
 		},
-	#1,
+    fonttitle=\bfseries,
+    title={#2},#1,
+}{nte}
+
+\NewDocumentCommand\Note{O{Note:-}m}{%
+    \begin{note*}{#1}{}
+        #2
+    \end{note*}
 }
 
 

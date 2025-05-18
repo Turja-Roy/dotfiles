@@ -1,0 +1,4 @@
+#!/bin/bash
+vpn_list=("US-Swe" "US-Swi" "US-Ice" "US")
+selected_vpn=${vpn_list[$RANDOM % ${#vpn_list[@]}]}
+nmcli con up "$selected_vpn" &

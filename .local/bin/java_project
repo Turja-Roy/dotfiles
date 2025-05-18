@@ -4,7 +4,15 @@
 # It will create a src folder and a bin folder
 
 # Check if the user has provided a folder name
-if [ $# -eq 0 ]; then
+if [ $# -eq 1 ]; then
+    folder_name=$1
+    # Check if the folder already exists
+    if [ -d folder_name ]; then
+        echo "Folder already exists"
+        exit 1
+    fi
+
+elif [ $# -eq 0 ]; then
     echo "Please provide a folder name"
     # take the user input
     read folder_name
@@ -18,19 +26,6 @@ if [ $# -eq 0 ]; then
         echo "Folder already exists"
         exit 1
     fi 
-    # Create the folder
-    mkdir $folder_name
-fi
-
-# Check if the user has provided a folder name
-if [ $# -eq 1 ]; then
-    folder_name=$1
-fi
-
-# Check if the folder already exists
-if [ -d folder_name ]; then
-    echo "Folder already exists"
-    exit 1
 fi
 
 # Ask for the package name
@@ -50,28 +45,28 @@ mkdir $folder_name
 # Create the src, bin and commands folder
 mkdir $folder_name/src
 mkdir $folder_name/bin
-mkdir $folder_name/commands
-mkdir $folder_name/commands/scripts
+# mkdir $folder_name/commands
+# mkdir $folder_name/commands/scripts
 
-# Write the build.c file content
-echo "#include <stdio.h>" > $folder_name/commands/scripts/build.c
-echo "#include <stdlib.h>" >> $folder_name/commands/scripts/build.c 
-echo "int main() {" >> $folder_name/commands/scripts/build.c 
-echo "system(\"cd .. && javac -d bin src/$package_name/*.java\");" >> $folder_name/commands/scripts/build.c
-echo "return 0;" >> $folder_name/commands/scripts/build.c 
-echo "}" >> $folder_name/commands/scripts/build.c 
-
-# Write the run.c file content
-echo "#include <stdio.h>" > $folder_name/commands/scripts/run.c 
-echo "#include <stdlib.h>" >> $folder_name/commands/scripts/run.c 
-echo "int main() {" >> $folder_name/commands/scripts/run.c 
-echo "system(\"cd .. && java -cp bin $package_name.$main_class_name\");" >> $folder_name/commands/scripts/run.c 
-echo "return 0;" >> $folder_name/commands/scripts/run.c 
-echo "}" >> $folder_name/commands/scripts/run.c 
-
-# Compile the build.c and run.c files and move the executables to the commands folder
-gcc $folder_name/commands/scripts/build.c -o $folder_name/commands/build
-gcc $folder_name/commands/scripts/run.c -o $folder_name/commands/run
+# # Write the build.c file content
+# echo "#include <stdio.h>" > $folder_name/commands/scripts/build.c
+# echo "#include <stdlib.h>" >> $folder_name/commands/scripts/build.c 
+# echo "int main() {" >> $folder_name/commands/scripts/build.c 
+# echo "system(\"cd .. && javac -d bin src/$package_name/*.java\");" >> $folder_name/commands/scripts/build.c
+# echo "return 0;" >> $folder_name/commands/scripts/build.c 
+# echo "}" >> $folder_name/commands/scripts/build.c 
+#
+# # Write the run.c file content
+# echo "#include <stdio.h>" > $folder_name/commands/scripts/run.c 
+# echo "#include <stdlib.h>" >> $folder_name/commands/scripts/run.c 
+# echo "int main() {" >> $folder_name/commands/scripts/run.c 
+# echo "system(\"cd .. && java -cp bin $package_name.$main_class_name\");" >> $folder_name/commands/scripts/run.c 
+# echo "return 0;" >> $folder_name/commands/scripts/run.c 
+# echo "}" >> $folder_name/commands/scripts/run.c 
+#
+# # Compile the build.c and run.c files and move the executables to the commands folder
+# gcc $folder_name/commands/scripts/build.c -o $folder_name/commands/build
+# gcc $folder_name/commands/scripts/run.c -o $folder_name/commands/run
 
 # Create the package folder
 mkdir $folder_name/src/$package_name

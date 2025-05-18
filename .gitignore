@@ -14,5 +14,5 @@
 .config/nvim/init.vim_
 .config/nvim/lazy-lock.json
 .config/xournalpp/settings.xml
-*.metadata
+*/*.metadata
 .config/xournalpp/metadata

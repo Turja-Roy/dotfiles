@@ -77,6 +77,7 @@ main() {
 
     # Find main class
     local main_class=$(find_main_class "$src_dir")
+    main_class=${main_class%.java} # Strip the .java extension
     echo "Main class: $main_class"
     
     if [[ -z "$main_class" ]]; then
@@ -84,12 +85,12 @@ main() {
         exit 1
     fi
 
-    # Ask for command line arguments if not provided
-    if [ -z "$2" ]; then
-        read -p "args: " args
-    else
-        args=$2
-    fi
+    # # Ask for command line arguments if not provided
+    # if [ -z "$2" ]; then
+    #     read -p "args: " args
+    # else
+    #     args=$2
+    # fi
     
     # Run the Java program
     java -cp "$bin_dir:$CLASSPATH" "$main_class" $args

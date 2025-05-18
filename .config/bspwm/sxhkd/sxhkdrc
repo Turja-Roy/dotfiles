@@ -37,7 +37,7 @@ super + e
 
 #Ranger
 super + r
-    alacritty -e ranger
+    LIBGL_ALWAYS_SOFTWARE=1 alacritty -e ranger
 
 #Emoji selector (Rofi)
 super + shift + e
@@ -45,7 +45,7 @@ super + shift + e
 
 #Htop
 super + t
-    alacritty -e htop
+    LIBGL_ALWAYS_SOFTWARE=1 alacritty -e htop
 
 #archlinux-logout
 super + shift + x
@@ -57,7 +57,8 @@ super + shift + x
 
 #alacritty
 super + Return
-    alacritty
+    LIBGL_ALWAYS_SOFTWARE=1 alacritty
+    # alacritty
 
 #Xkill
 super + Escape
@@ -155,7 +156,7 @@ super + ctrl + shift + s
 
 #alacritty
 ctrl + alt + t
-    alacritty -e tmux
+    LIBGL_ALWAYS_SOFTWARE=1 alacritty -e tmux
 
 #alacritty opacity
 # ctrl + shift + {9,0}

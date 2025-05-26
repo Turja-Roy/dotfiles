@@ -1,4 +1,150 @@
 #!/bin/bash
-vpn_list=("US-Swe" "US-Swi" "US-Ice" "US")
-selected_vpn=${vpn_list[$RANDOM % ${#vpn_list[@]}]}
-nmcli con up "$selected_vpn" &
+
+# Define available VPNs by country code
+declare -A vpns=(
+    ["US"]="US-Swe US-Swi US-Ice US"
+    ["UK"]="UK-Swe UK-Swi UK-Ice"
+    ["IN"]="IN-Swe IN-Swi IN-Ice IN"
+    ["JP"]="JP-Swi"
+    ["IS"]="IS-Swi"
+    ["BD"]="BD"
+)
+
+# Default values
+country="US"
+secure_core=false
+speed_test_mode=false
+random_mode=false
+
+# Function to display help message
+show_help() {
+    echo "Usage: vpnup [flags] [country]"
+    echo "Flags:"
+    echo "  -s  Secure Core (exclude default VPN)"
+    echo "  -p  Perform speed test"
+    echo "  -r  Random selection"
+    echo "Examples:"
+    echo "  vpnup -sp US   # Speed test secure-core US VPN"
+    echo "  vpnup -r UK    # Random UK VPN"
+    echo "  vpnup IN       # Random India VPN"
+    exit 0
+}
+
+# Function to parge flags
+parse_flags() {
+    local flags=$1
+    for (( i=1 ; i<${#flags} ; i++ )); do
+        case "${flags:$i:1}" in
+            s) secure_core=true ;;
+            p) speed_test_mode=true ;;
+            r) random_mode=true; speed_test_mode=false ;;
+            h) show_help ;;
+            *) echo "Error: unknown flag -${flags:$i:1}" >&2; exit 1 ;;
+        esac
+    done
+}
+
+# Function for randomly connecting to a US VPN
+random_vpn() {
+    local country_code="$1"
+    local vpn_list=(${vpns[$country_code]})
+    if [[ ${#vpn_list[@]} -eq 0 ]]; then
+        echo "Error: Unsupported country '$country_code'. Available options: ${!vpns[@]}" >&2
+        exit 1
+    fi
+
+    index=$(( RANDOM % ${#vpn_list[@]} ))
+    echo "Connecting to random VPN: ${vpn_list[index]}"
+    nmcli con up "${vpn_list[index]}"
+
+    exit 0
+}
+
+# Function for speed test
+speed_test() {
+    local vpn=$1
+    
+    echo "Testing ${vpn} speed..."
+    nmcli con up "$vpn" &>/dev/null # Connect to the VPN
+    sleep 5  # Wait for connection to stabilize
+
+    # Perform speed test
+    speed=$(speedtest-cli --simple | grep 'Download' | awk '{print $2}')
+    echo "Download speed: ${speed} Mbps"
+
+    nmcli con down "$vpn" &>/dev/null # Disconnect from the VPN
+}
+
+# Process arguments
+args=()
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -*) 
+            parse_flags "$1"
+            shift
+            ;;
+        *)
+            args+=("$1")
+            shift
+            ;;
+    esac
+done
+
+# Set country if specified
+if [[ ${#args[@]} -gt 0 ]]; then
+    country="${args[0]^^}"
+    if [[ ! -v vpns[$country] ]]; then
+        echo "Error: Unsupported country '$country'. Available options: ${!vpns[@]}" >&2
+        exit 1
+    fi
+fi
+
+# Initialize VPN list
+IFS=' ' read -ra vpn_list <<< "${vpns[$country]}"
+
+# If country has only one VPN, connect directly
+if [[ ${#vpn_list[@]} -eq 1 ]]; then
+    selected_vpn="${vpn_list[0]}"
+    if nmcli con up "$selected_vpn" &>/dev/null; then
+        echo "Connected to only available $country VPN: $selected_vpn"
+        exit 0
+    else
+        echo "Error: Failed to connect to $selected_vpn" >&2
+        exit 1
+    fi
+fi
+
+# Remove default (no secure-core) VPN if -s flag is set
+if [[ "$secure_core" == true && ${#vpn_list[@]} -gt 1 ]]; then
+    vpn_list=("${vpn_list[@]:0:$((${#vpn_list[@]}-1))}")
+fi
+
+# Random selection mode
+if [[ "$random_mode" == true || "$speed_test_mode" == false ]]; then
+    random_vpn "$country"
+fi
+
+# Speed test mode
+if [[ "$speed_test_mode" == true ]]; then
+    declare -A speeds
+
+    for vpn in "${vpn_list[@]}"; do
+        speed_test "$vpn"
+        speeds["$vpn"]=$speed
+    done
+
+    # Find the VPN with the highest speed
+    best_vpn=$(printf "%s\n" "${!speeds[@]}" | sort -nr -k2,2 | head -n1)
+    echo "Best VPN based on speed: $best_vpn with ${speeds[$best_vpn]} Mbps"
+
+    if nmcli con up "$best_vpn" &>/dev/null; then
+        echo "Connected to best VPN: $best_vpn"
+        exit 0
+    else
+        echo "Error: Failed to connect to $best_vpn" >&2
+        echo "Fallback to random VPN selection."
+        random_vpn "$country"
+        exit 1
+    fi
+fi
+xit 0

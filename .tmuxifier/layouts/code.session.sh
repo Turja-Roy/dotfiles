@@ -14,7 +14,7 @@ if initialize_session $(basename $(pwd)); then
 	new_window "Nav"
 	run_cmd "cd $(pwd)"
 	run_cmd "clear"
-	run_cmd "ranger"
+	run_cmd "yazi"
 
 	select_window 1
 

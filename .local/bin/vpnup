@@ -133,6 +133,12 @@ if [[ "$speed_test_mode" == true ]]; then
         speeds["$vpn"]=$speed
     done
 
+    # Print the speeds
+    echo "Speed test results:"
+    for vpn in "${!speeds[@]}"; do
+        echo "$vpn: ${speeds[$vpn]} Mbps"
+    done
+
     # Find the VPN with the highest speed
     best_vpn=$(printf "%s\n" "${!speeds[@]}" | sort -nr -k2,2 | head -n1)
     echo "Best VPN based on speed: $best_vpn with ${speeds[$best_vpn]} Mbps"

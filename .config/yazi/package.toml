@@ -3,6 +3,11 @@ use = "macydnah/office"
 rev = "d1e3e51"
 hash = "35241f7d85abc5a0d2441020bc597ceb"
 
+[[plugin.deps]]
+use = "llanosrocas/yaziline"
+rev = "e79b067"
+hash = "f590c5b7d0730e8d6023b1b34ddf7ead"
+
 [[flavor.deps]]
 use = "PinThePenguinOne/sunset"
 rev = "64ad82e"

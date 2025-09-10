@@ -140,7 +140,8 @@ if [[ "$speed_test_mode" == true ]]; then
     done
 
     # Find the VPN with the highest speed
-    best_vpn=$(printf "%s\n" "${!speeds[@]}" | sort -nr -k2,2 | head -n1)
+    best_vpn=$(for vpn in "${!speeds[@]}"; do echo "$vpn ${speeds[$vpn]}"; done | sort -k2 -nr | head -n1 | awk '{print $1}')
+    # best_vpn=$(printf "%s\n" "${!speeds[@]}" | sort -nr -k2,2 | head -n1)
     echo "Best VPN based on speed: $best_vpn with ${speeds[$best_vpn]} Mbps"
 
     if nmcli con up "$best_vpn" &>/dev/null; then
@@ -153,4 +154,4 @@ if [[ "$speed_test_mode" == true ]]; then
         exit 1
     fi
 fi
-xit 0
+exit 0

@@ -78,6 +78,7 @@ alias srec='ffmpeg -f x11grab -s 1920x1080 -r 30 -i :0.0 -f alsa -i default -c:v
 alias tmxat='tmux attach-session'
 alias tmf='tmuxifier'
 alias cdf='cd $(fd -t d | fzf)'
+alias xdg11='XDG_SESSION_TYPE=x11'
 
 # Git Aliases
 alias glone="git clone"

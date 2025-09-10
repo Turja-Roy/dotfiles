@@ -135,6 +135,7 @@ keymap = [
 	{ on = ["g", "m", "p"],   run = "cd /My-Drive/Programming",      desc = "Go /My-Drive/Programming" },
 	{ on = ["g", "m", "c"],   run = "cd /My-Drive/Programming/Codeforces",       desc = "Go /My-Drive/Programming/Codeforces" },
 	{ on = ["g", "m", "m"],   run = "cd /My-Drive/Programming/Machine_Learning", desc = "Go /My-Drive/Programming/Machine_Learning" },
+	{ on = ["g", "F"],        run = "cd ~/UTA/Fall25",                desc = "Go /UTA/Fall25" },
 
 	{ on = [ "g", "h" ],       run = "cd ~",             desc = "Go home" },
 	{ on = [ "g", "C" ],       run = "cd ~/.config",     desc = "Go ~/.config" },

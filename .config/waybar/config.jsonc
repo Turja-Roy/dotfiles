@@ -17,7 +17,7 @@
         "format-icons": {
             "active": "",
             "empty": "󰄰",
-            "default": "",
+            "default": "󰪥",
         }
     },
     "hyprland/window": {

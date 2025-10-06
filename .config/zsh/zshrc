@@ -31,6 +31,7 @@ manpath=(/usr/man /usr/lang/man /usr/local/man)
 export MANPATH
 export LD_PRELOAD=/usr/lib/libgtk3-nocsd.so.0
 export PATH="$HOME/.tmuxifier/bin:$PATH"
+export PATH="/bin/vendor_perl/:$PATH"
 
 # ZSH Properties
 export ZSH=$HOME/.config/zsh
@@ -65,6 +66,7 @@ alias h=history
 alias ls='eza --icons'
 alias ll='eza -l --icons'
 alias la='eza -a --icons'
+alias lla='eza -al --icons'
 alias lsd='eza -ld *(-/DN) --icons'
 alias lsa='eza -ld .* --icons'
 alias tree='eza --tree --icons'

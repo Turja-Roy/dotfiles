@@ -185,6 +185,14 @@ previewers = [
 	# Font
 	{ mime = "font/*", run = "font" },
 	{ mime = "application/ms-opentype", run = "font" },
+    # Documents
+    { mime = "application/{openxmlformats-officedocument.*,oasis.opendocument.*,ms-*}", run = "office" },
+    { mime = "application/msword", run = "office" },
+    { name = "*.docx", run = "office" },
+    # PowerPoint
+    { mime = "application/vnd.ms-powerpoint", run = "ppt" },
+    { mime = "application/vnd.openxmlformats-officedocument.presentationml.presentation", run = "ppt" },
+    { name = "*.pptx", run = "ppt" },
 	# Empty file
 	{ mime = "inode/empty", run = "empty" },
 	# Fallback

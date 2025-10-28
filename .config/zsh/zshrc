@@ -90,6 +90,7 @@ alias gush="git push"
 alias gull="git pull"
 alias gst="git status"
 alias glog="git log"
+alias glogn="git log --oneline -n"
 alias granch="git branch"
 alias gckout="git checkout"
 alias gupdateall="git pull && git add -A && git commit -m \"Update `date +'%Y-%m-%d %H:%M'`\" && git push"
@@ -98,6 +99,8 @@ alias lg="lazygit"
 
 # SSH UTA Tier3
 alias utat3="ssh -XY txr7972@master.tier3-atlas.uta.edu"
+alias mountt3="sshfs -o reconnect,ServerAliveInterval=15 'txr7972@master.tier3-atlas.uta.edu:/cluster/home/txr7972/raytrace/' ~/cluster_mount"
+alias umountt3="fusermount -u ~/cluster_mount"
 
 ### ---- PLUGINS & THEMES -----------------------------------
 source $ZSH/themes/powerlevel10k/powerlevel10k.zsh-theme
@@ -119,3 +122,6 @@ function y() {
 [[ ! -f ~/.config/zsh/p10k.zsh ]] || source ~/.config/zsh/p10k.zsh
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(tmuxifier init -)"
+
+# opencode
+export PATH=/home/turja/.opencode/bin:$PATH

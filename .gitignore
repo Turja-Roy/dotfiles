@@ -16,3 +16,4 @@
 .config/xournalpp/settings.xml
 */*.metadata
 .config/xournalpp/metadata
+.config/OpenTabletDriver/Logs/*

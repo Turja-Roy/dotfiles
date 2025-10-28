@@ -189,6 +189,10 @@ previewers = [
     { mime = "application/{openxmlformats-officedocument.*,oasis.opendocument.*,ms-*}", run = "office" },
     { mime = "application/msword", run = "office" },
     { name = "*.docx", run = "office" },
+    # Excel
+    { mime = "application/vnd.ms-excel", run = "xls" },
+    { mime = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", run = "xls" },
+    { name = "*.{xlsx,csv}", run = "xls" },
     # PowerPoint
     { mime = "application/vnd.ms-powerpoint", run = "ppt" },
     { mime = "application/vnd.openxmlformats-officedocument.presentationml.presentation", run = "ppt" },

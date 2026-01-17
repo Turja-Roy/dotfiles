@@ -1,7 +1,7 @@
 if initialize_session "upd"; then
 
   new_window "Upd"
-  run_cmd "upd"
+  run_cmd "yay -Syu --noconfirm && flatpak update -y"
 
   # select_window 1
 

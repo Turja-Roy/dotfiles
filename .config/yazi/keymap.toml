@@ -52,8 +52,8 @@ keymap = [
 	{ on = "V", run = "visual_mode --unset", desc = "Enter visual mode (unset mode)" },
 
 	# Seeking
-	{ on = "K", run = "seek -5", desc = "Seek up 5 units in the preview" },
-	{ on = "J", run = "seek 5",  desc = "Seek down 5 units in the preview" },
+	{ on = "K", run = "seek -1", desc = "Seek up 5 units in the preview" },
+	{ on = "J", run = "seek 1",  desc = "Seek down 5 units in the preview" },
 
 	# Spotting
 	{ on = "<Tab>", run = "spot", desc = "Spot hovered file" },
@@ -73,7 +73,8 @@ keymap = [
 	{ on = "Y",         run = "unyank",                      desc = "Cancel the yank status" },
 	{ on = "X",         run = "unyank",                      desc = "Cancel the yank status" },
 	{ on = [ "d", "t" ],         run = "remove",                      desc = "Trash selected files" },
-	{ on = [ "d", "D" ],         run = "remove --permanently",        desc = "Permanently delete selected files" },
+	{ on = [ "d", "P" ],         run = "remove --permanently",          desc = "Permanently delete selected files" },
+	{ on = [ "d", "D" ],         run = "remove",        desc = "No permanent delete for you, stupid!" },
 	{ on = "m",         run = "create",                      desc = "Create a file (ends with / for directories)" },
 	{ on = [ "c", "." ],         run = "rename --cursor=before_ext",  desc = "Rename selected file(s)" },
 	{ on = [ "c", "w" ],         run = "rename",  desc = "Rename selected file(s)" },
@@ -135,7 +136,7 @@ keymap = [
 	{ on = ["g", "m", "p"],   run = "cd /My-Drive/Programming",      desc = "Go /My-Drive/Programming" },
 	{ on = ["g", "m", "c"],   run = "cd /My-Drive/Programming/Codeforces",       desc = "Go /My-Drive/Programming/Codeforces" },
 	{ on = ["g", "m", "m"],   run = "cd /My-Drive/Programming/Machine_Learning", desc = "Go /My-Drive/Programming/Machine_Learning" },
-	{ on = ["g", "F"],        run = "cd ~/UTA/Fall25",                desc = "Go /UTA/Fall25" },
+	{ on = ["g", "S"],        run = "cd ~/UTA/Spring26",                desc = "Go /UTA/Spring26" },
 
 	{ on = [ "g", "h" ],       run = "cd ~",             desc = "Go home" },
 	{ on = [ "g", "C" ],       run = "cd ~/.config",     desc = "Go ~/.config" },

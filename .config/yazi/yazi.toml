@@ -93,21 +93,21 @@ xopp = [
 [open]
 rules = [
 	# Folder
-	{ name = "*/", use = [ "edit", "open", "reveal" ] },
+	{ url = "*/", use = [ "edit", "open", "reveal" ] },
 	# Text
 	{ mime = "text/*", use = [ "edit", "reveal" ] },
+    # DJVU
+    { url = "*.djvu", use = [ "djvu", "reveal" ] },
 	# Image
 	{ mime = "image/*", use = [ "image", "reveal" ] },
 	# Media
 	{ mime = "{audio,video}/*", use = [ "play", "reveal" ] },
     # PDF
     { mime = "application/pdf", use = [ "pdff", "reveal" ] },
-    # DJVU
-    { mime = "image/vnd.djvu", use = [ "djvu", "reveal" ] },
     # HTML
     { mime = "text/html", use = [ "html", "reveal" ] },
     # XOPP
-    { name = "*.xopp", use = [ "xopp" ] },
+    { url = "*.xopp", use = [ "xopp" ] },
 	# Archive
 	{ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", use = [ "extract", "reveal" ] },
 	# JSON
@@ -116,7 +116,7 @@ rules = [
 	# Empty file
 	{ mime = "inode/empty", use = [ "edit", "reveal" ] },
 	# Fallback
-	{ name = "*", use = [ "open", "reveal" ] },
+	{ url = "*", use = [ "open", "reveal" ] },
 ]
 
 [tasks]
@@ -128,12 +128,12 @@ image_bound      = [ 5000, 5000 ]
 suppress_preload = false
 
 [plugin]
-fetchers = [
+prepend_fetchers = [
 	# Mimetype
-	{ id = "mime", name = "*", run = "mime", prio = "high" },
+	{ id = "mime", if = "!mime", run = "mime", prio = "high" },
 ]
 spotters = [
-	{ name = "*/", run = "folder" },
+	{ url = "*/", run = "folder" },
 	# Code
 	{ mime = "text/*", run = "code" },
 	{ mime = "application/{mbox,javascript,wine-extension-ini}", run = "code" },
@@ -144,7 +144,7 @@ spotters = [
 	# Video
 	{ mime = "video/*", run = "video" },
 	# Fallback
-	{ name = "*", run = "file" },
+	{ url = "*", run = "file" },
 ]
 preloaders = [
 	# Image
@@ -160,7 +160,7 @@ preloaders = [
 	{ mime = "application/ms-opentype", run = "font" },
 ]
 previewers = [
-	{ name = "*/", run = "folder" },
+	{ url = "*/", run = "folder" },
 	# Code
 	{ mime = "text/*", run = "code" },
 	{ mime = "application/{mbox,javascript,wine-extension-ini}", run = "code" },
@@ -177,44 +177,44 @@ previewers = [
 	# Archive
 	{ mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", run = "archive" },
 	{ mime = "application/{debian*-package,redhat-package-manager,rpm,android.package-archive}", run = "archive" },
-	{ name = "*.{AppImage,appimage}", run = "archive" },
+	{ url = "*.{AppImage,appimage}", run = "archive" },
 	# Virtual Disk / Disk Image
 	{ mime = "application/{iso9660-image,qemu-disk,ms-wim,apple-diskimage}", run = "archive" },
 	{ mime = "application/virtualbox-{vhd,vhdx}", run = "archive" },
-	{ name = "*.{img,fat,ext,ext2,ext3,ext4,squashfs,ntfs,hfs,hfsx}", run = "archive" },
+	{ url = "*.{img,fat,ext,ext2,ext3,ext4,squashfs,ntfs,hfs,hfsx}", run = "archive" },
 	# Font
 	{ mime = "font/*", run = "font" },
 	{ mime = "application/ms-opentype", run = "font" },
     # Documents
     { mime = "application/{openxmlformats-officedocument.*,oasis.opendocument.*,ms-*}", run = "office" },
     { mime = "application/msword", run = "office" },
-    { name = "*.docx", run = "office" },
+    { url = "*.docx", run = "office" },
     # Excel
     { mime = "application/vnd.ms-excel", run = "xls" },
     { mime = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", run = "xls" },
-    { name = "*.{xlsx,csv}", run = "xls" },
+    { url = "*.{xlsx,csv}", run = "xls" },
     # PowerPoint
     { mime = "application/vnd.ms-powerpoint", run = "ppt" },
     { mime = "application/vnd.openxmlformats-officedocument.presentationml.presentation", run = "ppt" },
-    { name = "*.pptx", run = "ppt" },
+    { url = "*.pptx", run = "ppt" },
 	# Empty file
 	{ mime = "inode/empty", run = "empty" },
 	# Fallback
-	{ name = "*", run = "file" },
+	{ url = "*", run = "file" },
 ]
 prepend_preloaders = [
     { mime = "application/openxmlformats-officedocument.*", run = "office" },
     { mime = "application/oasis.opendocument.*", run = "office" },
     { mime = "application/ms-*", run = "office" },
     { mime = "application/msword", run = "office" },
-    { name = "*.docx", run = "office" },
+    { url = "*.docx", run = "office" },
 ]
 prepend_previewers = [
     { mime = "application/openxmlformats-officedocument.*", run = "office" },
     { mime = "application/oasis.opendocument.*", run = "office" },
     { mime = "application/ms-*", run = "office" },
     { mime = "application/msword", run = "office" },
-    { name = "*.docx", run = "office" },
+    { url = "*.docx", run = "office" },
 ]
 
 [input]

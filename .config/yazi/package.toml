@@ -8,6 +8,11 @@ use = "llanosrocas/yaziline"
 rev = "e79b067"
 hash = "f590c5b7d0730e8d6023b1b34ddf7ead"
 
+[[plugin.deps]]
+use = "imsi32/yatline"
+rev = "88bd1c5"
+hash = "981acbe9b758b1af3a8154c932bb936d"
+
 [[flavor.deps]]
 use = "PinThePenguinOne/sunset"
 rev = "64ad82e"

@@ -13,6 +13,11 @@ use = "imsi32/yatline"
 rev = "88bd1c5"
 hash = "981acbe9b758b1af3a8154c932bb936d"
 
+[[plugin.deps]]
+use = "yazi-rs/plugins:piper"
+rev = "56971d0"
+hash = "76ea4ff62db6ebe62e4653c2de95cbd"
+
 [[flavor.deps]]
 use = "PinThePenguinOne/sunset"
 rev = "64ad82e"

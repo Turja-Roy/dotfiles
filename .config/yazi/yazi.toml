@@ -222,6 +222,13 @@ previewers = [
 #     { mime = "application/msword", run = "office" },
 #     { url = "*.docx", run = "office" },
 # ]
+prepend_previewers = [
+    # Office Documents - text preview using pandoc via piper
+    { mime = "application/vnd.openxmlformats-officedocument.wordprocessingml.document", run = 'piper -- pandoc --to=plain "$1"' },
+    { mime = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", run = 'piper -- pandoc --to=plain "$1"' },
+    { mime = "application/vnd.openxmlformats-officedocument.presentationml.presentation", run = 'piper -- pandoc --to=plain "$1"' },
+    { url = "*.{docx,xlsx,pptx,odt,ods,odp}", run = 'piper -- pandoc --to=plain "$1"' },
+]
 # prepend_previewers = [
 #     { mime = "application/openxmlformats-officedocument.*", run = "office" },
 #     { mime = "application/oasis.opendocument.*", run = "office" },

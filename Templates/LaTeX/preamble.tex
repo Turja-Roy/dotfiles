@@ -13,7 +13,7 @@
 \usepackage{xcolor}
 \usepackage[most]{tcolorbox}
 \usepackage{xparse}
-\usepackage{cleveref}
+\usepackage{hyperref,cleveref}
 
 
 %%%%%%%%%%%%%%%%
@@ -45,7 +45,7 @@
 	title={#2},#1
 }{def}
 
-\NewDocumentCommand\Definition{mm}{%
+\NewDocumentCommand\Definition{m+m}{%
     \begin{definition}{#1}{}
         #2
     \end{definition}
@@ -72,7 +72,7 @@
     description font=\bfseries\sffamily
 }{thrm}
 
-\NewDocumentCommand\Theorem{mm}{%
+\NewDocumentCommand\Theorem{m+m}{%
     \begin{theorem}{#1}{}
         #2
     \end{theorem}
@@ -100,7 +100,7 @@
     description font=\bfseries\sffamily
  }{corl}
 
-\NewDocumentCommand\Corollary{mm}{%
+\NewDocumentCommand\Corollary{m+m}{%
     \begin{corollary}{#1}{}
         #2
     \end{corollary}
@@ -128,7 +128,7 @@
 }
 {xmp}
 
-\NewDocumentCommand\Example{mm}{%
+\NewDocumentCommand\Example{m+m}{%
     \begin{example}{#1}{}
         #2
     \end{example}
@@ -154,7 +154,7 @@
     borderline west={3pt}{0pt}{black!30},
 }{exc}
 
-\NewDocumentCommand\Exercise{mm}{%
+\NewDocumentCommand\Exercise{m+m}{%
     \begin{excercise}{#1}{}
         #2
     \end{excercise}
@@ -199,7 +199,7 @@
     title={#2},#1,
 }{nte}
 
-\NewDocumentCommand\Note{O{Note:-}m}{%
+\NewDocumentCommand\Note{O{Note:-}+m}{%
     \begin{note*}{#1}{}
         #2
     \end{note*}

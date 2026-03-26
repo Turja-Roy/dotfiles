@@ -18,6 +18,11 @@ use = "yazi-rs/plugins:piper"
 rev = "56971d0"
 hash = "76ea4ff62db6ebe62e4653c2de95cbd"
 
+[[plugin.deps]]
+use = "yazi-rs/plugins:git"
+rev = "6f50636"
+hash = "270915fa8282a19908449530ff66f7e2"
+
 [[flavor.deps]]
 use = "PinThePenguinOne/sunset"
 rev = "64ad82e"

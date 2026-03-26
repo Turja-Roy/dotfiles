@@ -1,4 +1,5 @@
 {
+  "Revision": "0.6.6.2",
   "Profiles": [
     {
       "Tablet": "Huion H640P",
@@ -19,7 +20,7 @@
           "Width": 1920.0,
           "Height": 1080.0,
           "X": 960.0,
-          "Y": 540.0,
+          "Y": 1620.0001,
           "Rotation": 0.0
         },
         "Tablet": {
@@ -155,7 +156,9 @@
         ],
         "MouseButtons": [],
         "MouseScrollUp": null,
-        "MouseScrollDown": null
+        "MouseScrollDown": null,
+        "DisablePressure": false,
+        "DisableTilt": false
       }
     }
   ],

@@ -23,3 +23,7 @@ require("yaziline"):setup({
     filename_truncate_length = 6, -- leave 6 chars on both sides
     filename_truncate_separator = "..." -- the separator of the truncated filename
 })
+require("git"):setup{
+	-- Order of status signs showing in the linemode
+	order = 1500,
+}

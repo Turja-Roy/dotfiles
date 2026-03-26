@@ -82,6 +82,8 @@ alias tmxat='tmux attach-session'
 alias tmfs='tmuxifier s'
 alias cdf='cd $(fd -t d | fzf)'
 alias xdg11='XDG_SESSION_TYPE=x11'
+alias g4init='. ~/geant4/geant4-v11.3.2-install/share/Geant4/geant4make/geant4make.sh && xdg11'
+alias ofoamimit='source /opt/OpenFOAM/OpenFOAM-13/etc/bashrc'
 
 # Git Aliases
 alias glone="git clone"
@@ -96,6 +98,7 @@ alias granch="git branch"
 alias gckout="git checkout"
 alias gtash="git stash"
 alias grebase="git rebase -i"
+alias gwt="git worktree"
 alias gupdateall="git pull && git add -A && git commit -m \"Update `date +'%Y-%m-%d %H:%M'`\" && git push"
 alias glfstrack="git lfs track"
 alias lg="lazygit"

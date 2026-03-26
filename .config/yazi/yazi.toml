@@ -120,7 +120,7 @@ rules = [
 	# Office Documents - Word
 	{ url = "*.{doc,docx}", use = [ "word", "reveal" ] },
 	# Office Documents - Excel
-	{ url = "*.{xls,xlsx}", use = [ "excel", "reveal" ] },
+	{ url = "*.{csv,xls,xlsx}", use = [ "excel", "reveal" ] },
 	# Office Documents - PowerPoint
 	{ url = "*.{ppt,pptx}", use = [ "ppt", "reveal" ] },
 	# Archive
@@ -146,6 +146,8 @@ suppress_preload = false
 prepend_fetchers = [
 	# Mimetype
 	{ id = "mime", if = "!mime", run = "mime", prio = "high" },
+    { id = "git", url = "*", run = "git" },
+    { id = "git", url = "*/", run = "git" },
 ]
 spotters = [
 	{ url = "*/", run = "folder" },

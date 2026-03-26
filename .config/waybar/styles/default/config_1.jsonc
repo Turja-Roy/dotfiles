@@ -4,9 +4,9 @@
     "height": 30, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "spacing": 10, // Gaps between modules
-    "modules-left": [ "hyprland/workspaces", "network", "custom/cava" ],
-    "modules-center": [ "group/resources", "hyprland/window", "group/levels" ],
-    "modules-right": [ "group/systray", "group/status", "clock", "custom/power" ],
+    "modules-left": [ "hyprland/workspaces", "network", "hyprland/window" ],
+    "modules-center": [ "group/center" ],
+    "modules-right": [ "custom/spotify", "group/resources", "group/levels", "group/status", "clock", "custom/power" ],
 
     // Module configurations
     "hyprland/workspaces": {
@@ -104,11 +104,11 @@
     },
     "group/levels": {
         "orientation": "horizontal",
-        "modules": ["pulseaudio", "backlight"],
+        "modules": ["bluetooth", "pulseaudio", "backlight"],
     },
     "group/status": {
         "orientation": "horizontal",
-        "modules": ["bluetooth", "temperature", "battery"],
+        "modules": ["temperature", "battery"],
     },
     "backlight": {
         // "device": "acpi_video1",
@@ -185,22 +185,13 @@
         "format" : "⏻",
         "on-click": "wlogout"
     },
-    "custom/cava": {
-        // "exec": "/home/turja/.config/waybar/scripts/media_status.sh",
-        "exec": "/home/turja/.config/waybar/scripts/cava.sh",
-        "format": "{}",
-        "return-type": "text",
-        // "interval": 0.3,
-        "on-click": "playerctl play-pause",
-        // "tooltip": false
-    },
     "custom/updates": {
-        "exec": "checkupdates 2>/dev/null | wc -l",
+        "exec": "checkupdates | wc -l",
         "format": "󰏔 {}",
         "interval": 300,
         "on-click": "pamac-manager",
     },
-    "group/systray": {
+    "group/center": {
         "orientation": "horizontal",
         "modules": [ "tray", "custom/updates" ]
     }

@@ -83,7 +83,9 @@ alias tmfs='tmuxifier s'
 alias cdf='cd $(fd -t d | fzf)'
 alias xdg11='XDG_SESSION_TYPE=x11'
 alias g4init='. ~/geant4/geant4-v11.3.2-install/share/Geant4/geant4make/geant4make.sh && xdg11'
+alias g4minit='. ~/geant4/geant4-v11.3.2-mt-install/share/Geant4/geant4make/geant4make.sh && xdg11'
 alias ofoamimit='source /opt/OpenFOAM/OpenFOAM-13/etc/bashrc'
+alias otdinit='systemctl --user enable opentabletdriver.service --now && otd-gui &'
 
 # Git Aliases
 alias glone="git clone"

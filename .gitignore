@@ -18,3 +18,4 @@
 .config/xournalpp/metadata
 .config/OpenTabletDriver/Logs/*
 *.log
+/.local/bin/claude

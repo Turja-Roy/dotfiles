@@ -32,6 +32,14 @@ export MANPATH
 export LD_PRELOAD=/usr/lib/libgtk3-nocsd.so.0
 export PATH="$HOME/.tmuxifier/bin:$PATH"
 export PATH="/bin/vendor_perl/:$PATH"
+# MESA
+export MESA_DIR="/opt/mesa-26.04.1"
+export OMP_NUM_THREADS=12
+export MESASDK_ROOT="/opt/mesasdk"
+source $MESASDK_ROOT/bin/mesasdk_init.sh
+export PATH=$PATH:$MESA_DIR/scripts/shmesa
+# GYRE
+export GYRE_DIR="/opt/gyre/gyre-9.1.1"
 
 # ZSH Properties
 export ZSH=$HOME/.config/zsh
@@ -71,6 +79,8 @@ alias lsd='eza -ld *(-/DN) --icons'
 alias lsa='eza -ld .* --icons'
 alias tree='eza --tree --icons'
 alias duall='sudo du -sh /var/cache/pacman/pkg .cache/yay'
+alias -g NE='2>/dev/null'
+alias -g NULL='>/dev/null 2>&1'
 # alias upd='yay -Syu --noconfirm && flatpak update -y'
 alias upd='tmfs upd'
 alias flatup='flatpak update -y'
@@ -82,8 +92,8 @@ alias tmxat='tmux attach-session'
 alias tmfs='tmuxifier s'
 alias cdf='cd $(fd -t d | fzf)'
 alias xdg11='XDG_SESSION_TYPE=x11'
-alias g4init='. ~/geant4/geant4-v11.3.2-install/share/Geant4/geant4make/geant4make.sh && xdg11'
-alias g4minit='. ~/geant4/geant4-v11.3.2-mt-install/share/Geant4/geant4make/geant4make.sh && xdg11'
+alias g4init='. /opt/geant4/geant4-v11.3.2-install/share/Geant4/geant4make/geant4make.sh && xdg11'
+alias g4minit='. /opt/geant4/geant4-v11.3.2-mt-install/share/Geant4/geant4make/geant4make.sh && xdg11'
 alias ofoamimit='source /opt/OpenFOAM/OpenFOAM-13/etc/bashrc'
 alias otdinit='systemctl --user enable opentabletdriver.service --now && otd-gui &'
 
@@ -107,12 +117,12 @@ alias lg="lazygit"
 
 # HPC Clusters
 alias utat3="ssh -XY txr7972@master.tier3-atlas.uta.edu"
-alias mountt3="sshfs -o reconnect,ServerAliveInterval=15 'txr7972@master.tier3-atlas.uta.edu:/cluster/home/txr7972/raytrace/' ~/cluster_mount"
-alias umountt3="fusermount -u ~/cluster_mount"
+alias mountt3="sshfs -o ServerAliveInterval=15 'txr7972@master.tier3-atlas.uta.edu:/cluster/home/txr7972/raytrace/' ~/cluster_mount"
+alias umountt3="fusermount -uz ~/cluster_mount"
 alias ls6="ssh -XY roy@ls6.tacc.utexas.edu"
-alias mountls6="sshfs -o reconnect,ServerAliveInterval=15 'roy@ls6.tacc.utexas.edu:' ~/cluster_mount"
-alias mountls6_work="sshfs -o reconnect,ServerAliveInterval=15 'roy@ls6.tacc.utexas.edu:/work/11170/roy/' ~/cluster_mount"
-alias umountls6="fusermount -u ~/cluster_mount"
+alias mountls6="sshfs -o ServerAliveInterval=15 'roy@ls6.tacc.utexas.edu:' ~/cluster_mount"
+alias mountls6_work="sshfs -o ServerAliveInterval=15 'roy@ls6.tacc.utexas.edu:/work/11170/roy/' ~/cluster_mount"
+alias umountls6="fusermount -uz ~/cluster_mount"
 
 ### ---- PLUGINS & THEMES -----------------------------------
 source $ZSH/themes/powerlevel10k/powerlevel10k.zsh-theme
@@ -130,10 +140,15 @@ function y() {
 	rm -f -- "$tmp"
 }
 
+# Open buffer line in editor
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^X^E' edit-command-line
+
+# opencode
+export PATH=/home/turja/.opencode/bin:$PATH
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.config/zsh/p10k.zsh ]] || source ~/.config/zsh/p10k.zsh
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(tmuxifier init -)"
-
-# opencode
-export PATH=/home/turja/.opencode/bin:$PATH

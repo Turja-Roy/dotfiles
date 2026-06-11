@@ -97,6 +97,97 @@ button:hover {
     font-weight: bold;
 }
 
+#custom-pomodoro {
+    font-family: "Symbols Nerd Font", feather;
+    font-size: 14px;
+    padding: 0 10px;
+    border-radius: 15px;
+    border: 3px solid currentColor;
+    font-weight: bold;
+}
+#custom-pomodoro.focus {
+    color: #a6e3a1;
+}
+#custom-pomodoro.short-break {
+    color: #89b4fa;
+}
+#custom-pomodoro.long-break {
+    color: #f9e2af;
+}
+
+#custom-timer {
+    background-color: #1e1e2e;
+    /*color: #cdd6f4;*/
+    padding: 0 9px;
+    font-size: 15px;
+    border-radius: 15px;
+    font-family: "Doto";  /* place your font here */
+    /* Link for the above font https://fonts.google.com/specimen/Doto  */
+    font-weight: 900;
+    transition: all 0.2s ease;
+}
+#custom-timer.disabled {
+    background-color: transparent;
+    color: #bfbfbf;
+    opacity: 0.6;
+    font-weight: normal;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+}
+#custom-timer.idle {
+    background-color: transparent;
+    color: #bfbfbf;
+}
+#custom-timer.select {
+    background-color: #373948;
+    color: #85b2fa;
+}
+#custom-timer.running {
+    background-color: transparent;
+    color: #cccccc;
+}
+#custom-timer.pomo_break {
+    background-color: transparent;
+    color: #f9e2af; /* Yellow/Gold to distinguish break from work */
+}
+#custom-timer.pomo_msg {
+    background-color: transparent;
+    color: #cba6f7; /* Lavender/Purple for status messages */
+}
+#custom-timer.paused {
+    background-color: #404040;
+    color: #f9e2af;
+    /*border: 1px solid #f9e2af; */
+}
+#custom-timer.warning {
+    background-color: transparent;
+    animation-name: red-alert;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+#custom-timer.done {
+    background-color: #bfbfbf;
+    color: #11111b;
+}
+#custom-timer.reset {
+    color: #ff4d4d;
+    background-color: transparent;
+}
+@keyframes red-alert {
+0% {
+    color: #ff4d4d; /* Bright, visible Red */
+    opacity: 1;
+}
+100% {
+    color: #ff4d4d;
+    opacity: 0.8; /* Fade cleanly to 80% transparency */
+    text-shadow: none;
+}
+}
+
 #custom-power {
     background-color: transparent;
     color: #ff5250;
@@ -116,10 +207,10 @@ button:hover {
     color: #17F120;
 }
 @keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #ff0000;
-    }
+to {
+    background-color: #ffffff;
+    color: #ff0000;
+}
 }
 #battery.warning:not(.charging) {
     color: #ffffff;
@@ -322,7 +413,7 @@ label:focus {
 }
 
 #scratchpad.empty {
-	background-color: transparent;
+    background-color: transparent;
 }
 
 #privacy {

@@ -3,7 +3,7 @@ session_root "$(pwd)"
 if initialize_session $(basename $(pwd)); then
 
 	new_window "Coding"
-	if [[ -d "$(pwd)/src" ]]; then
+    if [[ -d "$(pwd)/src" ]] && compgen -G"$(pwd)/src/*.java" >/dev/null; then
 		run_cmd "cd $(pwd)/src"
 	else
 		run_cmd "cd $(pwd)"
